@@ -104,7 +104,8 @@ func run(pass *analysis.Pass) (interface{}, error) {
 		}
 
 		sort.Strings(uncovers)
-		pass.Reportf(sw.Pos(), "Missing value: %s", strings.Join(uncovers, ", "))
+		typeName := types.TypeString(t, types.RelativeTo(pass.Pkg))
+		pass.Reportf(sw.Pos(), "missing case(s) to %s value(s): %s", typeName, strings.Join(uncovers, ", "))
 	})
 
 	return nil, nil
