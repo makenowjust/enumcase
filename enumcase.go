@@ -3,6 +3,7 @@ package enumcase
 import (
 	"go/ast"
 	"go/types"
+	"sort"
 	"strings"
 
 	"golang.org/x/tools/go/analysis"
@@ -102,6 +103,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			return
 		}
 
+		sort.Strings(uncovers)
 		pass.Reportf(sw.Pos(), "Missing value: %s", strings.Join(uncovers, ", "))
 	})
 
