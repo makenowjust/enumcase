@@ -5,7 +5,7 @@
 ## Install
 
 ```console
-$ go get -u github.com/MakeNowJust/enumcase
+$ go get -u github.com/MakeNowJust/enumcase/cmd/enumcase
 ```
 
 ## Usage
