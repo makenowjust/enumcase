@@ -35,7 +35,8 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			return
 		}
 
-		hasDefault := false
+		// When the `switch` statement has `default` clause, finishes processing immediately.
+		// Because `default` clause is exhaustive.
 		for _, stmt := range sw.Body.List {
 			cc, ok := stmt.(*ast.CaseClause)
 			if !ok {
@@ -46,12 +47,8 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			//
 			// https://golang.org/pkg/go/ast/#CaseClause
 			if cc.List == nil {
-				hasDefault = true
+				return
 			}
-		}
-
-		if hasDefault {
-			return
 		}
 
 		t := pass.TypesInfo.TypeOf(sw.Tag)
