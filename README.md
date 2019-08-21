@@ -14,6 +14,12 @@ $ go get -u github.com/MakeNowJust/enumcase
 $ go vet -vettool=$(which enumcase) pkgname
 ```
 
+Or
+
+```console
+$ enumcase pkgname
+```
+
 ## Example
 
 For example you have this type and consts:
